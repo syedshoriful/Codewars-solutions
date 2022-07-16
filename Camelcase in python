@@ -1,1 +1,22 @@
+def to_camel_case(text):
+    cameltext = []
+    cameltext1 = []
+    stringcamel = ''
+    for value in text:
+        cameltext += value
+    for value in cameltext:
+        if value == '-' or value=='_':
+            indexvalue = int(cameltext.index(value))
+            Upper = cameltext[indexvalue + 1].upper()
+            del cameltext[indexvalue]
+            cameltext.insert(indexvalue + 1, Upper)
 
+        else:
+            cameltext1 += value
+    for value in cameltext1:
+        stringcamel+=value
+    print(stringcamel)
+    #or return stringcamel
+
+
+to_camel_case(text='The_Stealth_Warrior')
