@@ -1,0 +1,6 @@
+l = [1,s,2,d,d,3,1,2,4,f,a,f]
+new_list =[]
+for x in l:
+    if type(x) != str:
+        new_list.append(x)
+print (new_list)
