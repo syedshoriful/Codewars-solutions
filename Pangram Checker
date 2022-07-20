@@ -1,0 +1,19 @@
+import string
+alphabets_list=[]
+given_string='The quick brown fox jumps over the lazy dog'
+
+given_string_list=[]
+
+alphabets= string.ascii_letters
+for value in alphabets:
+    alphabets_list+=value
+for value in given_string:
+    given_string_list+=value
+for i in alphabets_list:
+    for j in given_string_list:
+        if i==j:
+          print("true")
+
+
+print(given_string_list)
+print(alphabets_list)
