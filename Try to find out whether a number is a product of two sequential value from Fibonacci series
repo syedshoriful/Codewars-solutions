@@ -1,0 +1,23 @@
+fibonacci_list = [0, 1]
+prod = 714
+result_array = []
+i = 0
+
+value = True
+while value:
+    if fibonacci_list[i] * fibonacci_list[i + 1] < prod:
+        fibonacci_list.append(fibonacci_list[i] + fibonacci_list[i + 1])
+        i += 1
+    elif fibonacci_list[i] * fibonacci_list[i + 1] > prod:
+        result_array.append(fibonacci_list[i])
+        result_array.append(fibonacci_list[i + 1])
+        result_array.append(False)
+
+        value = False
+    elif fibonacci_list[i] * fibonacci_list[i + 1] == prod:
+        result_array.append(fibonacci_list[i])
+        result_array.append(fibonacci_list[i + 1])
+        result_array.append(True)
+
+        value = False
+print(result_array)
