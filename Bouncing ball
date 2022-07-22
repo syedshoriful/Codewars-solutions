@@ -1,0 +1,15 @@
+def bouncing_ball(h, bounce, window):
+    # h = float
+    jump = 1
+    if h > 0 and 0 < bounce < 1:
+        while h > 1.5:
+            will_see = h * bounce
+            h = will_see
+            if will_see > 1.5:
+                jump += 2
+        print(jump)
+    else:
+        print(-1)
+
+
+bouncing_ball(30, 0.75, 1.5)
