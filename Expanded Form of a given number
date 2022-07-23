@@ -1,0 +1,30 @@
+You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+expanded_form(12) # Should return '10 + 2'
+expanded_form(42) # Should return '40 + 2'
+expanded_form(70304) # Should return '70000 + 300 + 4'
+
+def expanded_form(num):
+    str_num = str(num)
+    length = len(str_num)
+    result = ''
+    ones = 1
+    for value in range(0,length-1):
+        ones *= 10
+    for i in str_num:
+        position = int(i) * ones
+        ones //= 10
+        if i != "0":
+            result +=str(position)+' + '
+
+
+#function to remove '+' from last
+    empty_list=[]
+    for value in result:
+        empty_list+=value
+    length = len(empty_list)
+    del empty_list[length - 3:length]
+    new_result=''
+    for value in empty_list:
+        new_result += value
+    return new_result
