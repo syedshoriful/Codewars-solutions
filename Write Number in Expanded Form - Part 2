@@ -1,0 +1,35 @@
+his is version 2 of my 'Write Number in Exanded Form' Kata.
+
+You will be given a number and you will need to return it as a string in expanded form :
+
+expanded_from(807.304); // Should return "800 + 7 + 3/10 + 4/1000"
+expanded_from(1.24); // should return "1 + 2/10 + 4/100"
+expanded_from(7.304); // should return "7 + 3/10 + 4/1000"
+expanded_from(0.04); // should return "4/100"
+
+def expanded_form(num):
+    num_list=list(str(num))
+    indexofdot=num_list.index('.')
+    result_list=[]
+
+    for_multiplication=indexofdot-1
+    for value in num_list:
+        if value!='.':
+            if value!='0':
+                result_list.append(value+('0'*for_multiplication))
+            for_multiplication-=1
+        else:
+            break
+
+    for_devition='10'
+    for value in num_list[indexofdot+1::]:
+        if value != '0':
+            result_list.append(value+'/'+for_devition)
+        for_devition+='0'
+        
+    print(' + '.join(result_list))
+
+
+    pass
+
+expanded_form(1.24)
