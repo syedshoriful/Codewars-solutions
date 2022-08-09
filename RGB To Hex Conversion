@@ -1,0 +1,50 @@
+The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
+
+Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+
+The following are examples of expected output values:
+
+rgb(255, 255, 255) # returns FFFFFF
+rgb(255, 255, 300) # returns FFFFFF
+rgb(0,0,0) # returns 000000
+rgb(148, 0, 211) # returns 9400D3
+
+def rgb(r, g, b):
+    list=[]
+    result = ''
+    for_00_to_F=''
+
+    reverse_converted_reseult = ''
+    hex_value = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', 'A', 'B', 'C', 'D', 'E', 'F']
+    hex_value1=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    arr = [r, g, b]
+
+    for value in arr:
+        if value == 0 or value < 0:
+            result += "00"
+            
+        elif value > 255:
+            result += 'FF'
+            
+        elif 1<=value<=9:
+            result+=hex_value[value]
+            
+        elif 10<=value<=15:
+            result+='0'+ hex_value[value]
+            
+        elif 16<=value<=255:
+            not_0=True
+ #To calculate the hex value out of decimal value           
+            while not_0:
+                n = value%16
+                list+=hex_value1[n]
+                value = value // 16
+                if value == 0:
+                    not_0 = False
+#To reverse the hex value                    
+            list.reverse()
+            for i in list:
+                result+=i
+            list.clear()
+
+    return result
