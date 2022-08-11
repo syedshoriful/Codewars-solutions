@@ -1,0 +1,68 @@
+How can you tell an extrovert from an introvert at NSA? Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf.
+
+I found this joke on USENET, but the punchline is scrambled. Maybe you can decipher it? According to Wikipedia, ROT13 (http://en.wikipedia.org/wiki/ROT13) is frequently used to obfuscate jokes on USENET.
+
+Hint: For this task you're only supposed to substitue characters. Not spaces, punctuation, numbers etc.
+
+Test examples:
+
+"EBG13 rknzcyr." -->
+"ROT13 example."
+
+"This is my first ROT13 excercise!" -->
+"Guvf vf zl svefg EBG13 rkprepvfr!"
+
+#solution
+import string
+
+punction = string.punctuation
+alphabet = string.ascii_letters
+Upper_case = string.ascii_uppercase
+
+def rot13(message):
+    message1 = []
+    for value in message:
+        message1 += value
+    return_value = ''
+    alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                     'u', 'v', 'w', 'x', 'y', 'z']
+    alphabet_list1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                      'T',
+                      'U', 'V', 'W', 'X', 'Y', 'Z']
+    number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    whitespaces = ['\t', '\n', '\r', '\x0b', '\x0c']
+    for letter in message1:
+        if letter == ' ':
+            return_value += letter
+
+        for value in whitespaces:
+            if letter == value:
+                return_value += letter
+
+        for value in punction:
+            if letter == value:
+                return_value += letter
+
+        for value in number_list:
+            if letter == value:
+                return_value += letter
+
+        for i in alphabet_list:
+            if i == letter:
+                index_of_i = alphabet_list.index(i)
+                if (index_of_i + 13) < 26:
+                    return_value += alphabet_list[index_of_i + 13]
+                if (index_of_i + 13) > 25:
+                    return_value += alphabet_list[index_of_i - 13]
+        for i in alphabet_list1:
+            if i == letter:
+                index_of_i = alphabet_list1.index(i)
+                if (index_of_i + 13) < 26:
+                    return_value += alphabet_list1[index_of_i + 13]
+                if (index_of_i + 13) > 25:
+                    return_value += alphabet_list1[index_of_i - 13]
+
+    #return return_value
+    print(return_value)
+
+rot13("EBG13 rknzcyr.")
