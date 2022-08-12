@@ -1,0 +1,53 @@
+he marketing team is spending way too much time typing in hashtags.
+Let's help them with our own Hashtag Generator!
+
+Here's the deal:
+
+It must start with a hashtag (#).
+All words must have their first letter capitalized.
+If the final result is longer than 140 chars it must return false.
+If the input or the result is an empty string it must return false.
+Examples
+" Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+"    Hello     World   "                  =>  "#HelloWorld"
+""                                        =>  false
+
+solution
+
+def generate_hashtag(s):
+    result_string = "#"
+    result_string1 = ''
+    list_of_s = []
+    for_modification = []
+    
+    for value in s:
+        list_of_s += value.lower()
+
+    if len(s) > 140:
+        return False
+    elif s == "":
+        return False
+    while len(list_of_s)!=0:
+        for value in list_of_s:
+            for_modification+=value
+            if value==' ':
+                break
+        for value in range(0,len(for_modification)):
+            if value == 0:
+                result_string+=for_modification[value].upper()
+            elif value!=' ':
+                result_string+=for_modification[value]
+        for value in range(0,len(for_modification)):
+                if list_of_s[0] == for_modification[value]:
+                    list_of_s.remove(list_of_s[0])
+
+        #print(for_modification)
+        for_modification.clear()
+        
+    for value in result_string:
+        if value!=' ':
+            result_string1+=value
+    
+    return result_string1
+
+
